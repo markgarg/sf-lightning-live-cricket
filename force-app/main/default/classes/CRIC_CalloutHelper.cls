@@ -1,3 +1,4 @@
+@SuppressWarnings('PMD.ExcessiveParameterList')
 public class CRIC_CalloutHelper {
 	public static final String CUSTOM_SETTING_CRIC_RAPID_API_HOST = 'CRIC_RAPID_API_HOST';
 	public static final String CUSTOM_SETTING_CRIC_RAPID_API_KEY = 'CRIC_RAPID_API_KEY';

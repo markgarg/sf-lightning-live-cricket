@@ -91,7 +91,8 @@ public without sharing class CRIC_RapidAPIService {
 		Boolean isHomeTeamBatting
 	) {
 		String battingScoreTemplate = '{0} {1} ov';
-		String score, overs;
+		String score;
+		String overs;
 		if (isHomeTeamBatting) {
 			score = scores.homeScore;
 			overs = scores.homeOvers;

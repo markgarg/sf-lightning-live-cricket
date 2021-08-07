@@ -44,7 +44,7 @@ private class CRIC_RapidAPIServiceTest {
 		System.assertEquals(
 			expectedScore,
 			CRIC_RapidAPIService.extractScoreFromResponse(json),
-			'Score is not extracted correctly'
+			'First innings score is not extracted correctly'
 		);
 	}
 
@@ -54,7 +54,8 @@ private class CRIC_RapidAPIServiceTest {
 		String expectedScore = 'AFG 1-37 5.5 ov (Rahmat Shah 1, Hazratullah Zazai 27*, Isuru Udana 0-3) vs SL 201 36.5 ov - Live: AFG need 150 runs off 211 balls(D/L Method)';
 		System.assertEquals(
 			expectedScore,
-			CRIC_RapidAPIService.extractScoreFromResponse(json)
+			CRIC_RapidAPIService.extractScoreFromResponse(json),
+			'Second innings score is not extracted correctly'
 		);
 	}
 }
