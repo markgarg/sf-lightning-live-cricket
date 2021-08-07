@@ -1,5 +1,4 @@
 @SuppressWarnings('PMD.ExcessiveParameterList')
-@isTest
 public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
 	public Integer statusCode { get; set; }
 	public String body { get; set; }
@@ -101,7 +100,6 @@ public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
 		return this;
 	}
 
-	@isTest
 	public HTTPResponse respond(HTTPRequest httpRequest) {
 		request = httpRequest;
 		HttpResponse response = new HttpResponse();
