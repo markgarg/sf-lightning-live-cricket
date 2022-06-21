@@ -42,7 +42,7 @@ private class MatchHelperTest {
 		);
 
 		Test.startTest();
-		Test.setMock(CricHttpCalloutMock.class, mock);
+		Test.setMock(HttpCalloutMock.class, mock);
 		// When
 		Date twelfthJune = Date.newInstance(2019, 6, 12);
 		List<String> matchIds = MatchHelper.getMatchIds(twelfthJune);
@@ -69,7 +69,7 @@ private class MatchHelperTest {
 		);
 
 		Test.startTest();
-		Test.setMock(CricHttpCalloutMock.class, mock);
+		Test.setMock(HttpCalloutMock.class, mock);
 		// When
 		Date twelfthJune = Date.newInstance(2019, 6, 12);
 		List<String> matchIds = MatchHelper.getMatchIds(twelfthJune);
@@ -98,7 +98,7 @@ private class MatchHelperTest {
 		);
 
 		Test.startTest();
-		Test.setMock(CricHttpCalloutMock.class, mock);
+		Test.setMock(HttpCalloutMock.class, mock);
 		// When
 		Date twelfthJune = Date.newInstance(2019, 6, 12);
 		List<String> matchIds = MatchHelper.getMatchIds(twelfthJune);

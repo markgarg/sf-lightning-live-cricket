@@ -49,7 +49,7 @@ private class LiveScoreServiceTest {
 		);
 
 		Test.startTest();
-		Test.setMock(CricHttpCalloutMock.class, mock);
+		Test.setMock(HttpCalloutMock.class, mock);
 		// When
 		List<String> response = LiveScoreService.fetchLiveScoreFromAPI(
 			SERIES_ID,
@@ -85,7 +85,7 @@ private class LiveScoreServiceTest {
 		);
 
 		Test.startTest();
-		Test.setMock(CricHttpCalloutMock.class, mock);
+		Test.setMock(HttpCalloutMock.class, mock);
 		// When
 		List<String> response = LiveScoreService.fetchLiveScoreFromAPI(
 			SERIES_ID,
@@ -121,7 +121,7 @@ private class LiveScoreServiceTest {
 		);
 
 		Test.startTest();
-		Test.setMock(CricHttpCalloutMock.class, mock);
+		Test.setMock(HttpCalloutMock.class, mock);
 		// When
 		List<String> response = LiveScoreService.fetchLiveScoreFromAPI(
 			SERIES_ID,

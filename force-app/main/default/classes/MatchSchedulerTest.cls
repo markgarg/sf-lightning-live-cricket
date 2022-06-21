@@ -41,7 +41,7 @@ private class MatchSchedulerTest {
 			.throwException();
 
 		Test.startTest();
-		Test.setMock(CricHttpCalloutMock.class, mock);
+		Test.setMock(HttpCalloutMock.class, mock);
 		// When
 		MatchScheduler sch = new MatchScheduler();
 		System.schedule('test match id fetch', '0 0 0 3 9 ? 2028', sch);
