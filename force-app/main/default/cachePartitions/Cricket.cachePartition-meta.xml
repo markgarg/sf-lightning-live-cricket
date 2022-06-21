@@ -10,7 +10,7 @@
         <cacheType>Session</cacheType>
     </platformCachePartitionTypes>
     <platformCachePartitionTypes>
-        <allocatedCapacity>30</allocatedCapacity>
+        <allocatedCapacity>6</allocatedCapacity>
         <allocatedPartnerCapacity>0</allocatedPartnerCapacity>
         <allocatedPurchasedCapacity>0</allocatedPurchasedCapacity>
         <allocatedTrialCapacity>0</allocatedTrialCapacity>

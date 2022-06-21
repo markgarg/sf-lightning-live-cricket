@@ -1,5 +1,5 @@
 @SuppressWarnings('PMD.ExcessiveParameterList')
-public with sharing class HttpCalloutMock implements HttpCalloutMock {
+public with sharing class CricHttpCalloutMock implements HttpCalloutMock {
 	public Integer statusCode { get; set; }
 	public String body { get; set; }
 	public Map<String, String> headers { get; set; }
@@ -13,11 +13,11 @@ public with sharing class HttpCalloutMock implements HttpCalloutMock {
 	private String requestURLShouldContain;
 	private String requestBodyShouldContain;
 
-	public HttpCalloutMock(Integer statusCode) {
+	public CricHttpCalloutMock(Integer statusCode) {
 		this(null, statusCode, '', '', new Map<String, String>());
 	}
 
-	public HttpCalloutMock(
+	public CricHttpCalloutMock(
 		String httpMethod,
 		Integer statusCode,
 		String status,
@@ -33,12 +33,12 @@ public with sharing class HttpCalloutMock implements HttpCalloutMock {
 		this.responseStatusCodeConditionMap = new Map<String, StatusBody>();
 	}
 
-	public HttpCalloutMock whenUrlContains(String urlContains) {
+	public CricHttpCalloutMock whenUrlContains(String urlContains) {
 		this.urlContains = urlContains;
 		return this;
 	}
 
-	public HttpCalloutMock respondWith(Integer statusCode, String body) {
+	public CricHttpCalloutMock respondWith(Integer statusCode, String body) {
 		this.statusCode = statusCode;
 		if (String.isNotBlank(this.urlContains)) {
 			this.responseStatusCodeConditionMap.put(
@@ -51,7 +51,7 @@ public with sharing class HttpCalloutMock implements HttpCalloutMock {
 		return this;
 	}
 
-	public HttpCalloutMock respondWith(String body) {
+	public CricHttpCalloutMock respondWith(String body) {
 		if (String.IsNotBlank(urlContains)) {
 			responseConditionMap.put(urlContains, body);
 		} else {
@@ -60,7 +60,7 @@ public with sharing class HttpCalloutMock implements HttpCalloutMock {
 		return this;
 	}
 
-	public HttpCalloutMock throwException() {
+	public CricHttpCalloutMock throwException() {
 		throwExceptionOnRespond = true;
 		return this;
 	}
@@ -93,7 +93,7 @@ public with sharing class HttpCalloutMock implements HttpCalloutMock {
 		return this.request.getHeader(key);
 	}
 
-	public HttpCalloutMock checkIfURLContains(String requestURLShouldContain) {
+	public CricHttpCalloutMock checkIfURLContains(String requestURLShouldContain) {
 		this.requestURLShouldContain = requestURLShouldContain;
 		return this;
 	}

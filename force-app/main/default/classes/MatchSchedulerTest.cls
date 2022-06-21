@@ -36,12 +36,12 @@ private class MatchSchedulerTest {
 	static void shouldCallAPIWhenScheduled() {
 		// Given
 		// Throw exception so that cric_match_id custom setting isn't created/updated.
-		HttpCalloutMock mock = new HttpCalloutMock(200)
+		CricHttpCalloutMock mock = new CricHttpCalloutMock(200)
 			.whenUrlContains('/matches.php')
 			.throwException();
 
 		Test.startTest();
-		Test.setMock(HttpCalloutMock.class, mock);
+		Test.setMock(CricHttpCalloutMock.class, mock);
 		// When
 		MatchScheduler sch = new MatchScheduler();
 		System.schedule('test match id fetch', '0 0 0 3 9 ? 2028', sch);
