@@ -1,11 +1,11 @@
-public without sharing class CRIC_MatchHelper {
-	public static final String MATCHES_URL = CRIC_Utils.getCricketSetting(
+public without sharing class MatchHelper {
+	public static final String MATCHES_URL = Utils.getCricketSetting(
 		'CRIC_MATCHES_URL'
 	);
 
 	@future(callout=true)
 	public static void populateMatchIds() {
-		List<String> matchIds = CRIC_MatchHelper.getMatchIds(Date.today());
+		List<String> matchIds = MatchHelper.getMatchIds(Date.today());
 		System.debug(
 			LoggingLevel.INFO,
 			'populateMatchIds> matchIds :' + matchIds
@@ -14,7 +14,7 @@ public without sharing class CRIC_MatchHelper {
 			String commaSeparatedMatchIds = String.join(matchIds, ',');
 			Map<String, Cricket_Settings__c> orgConfigMap = Cricket_Settings__c.getAll();
 			Cricket_Settings__c matchConfig = orgConfigMap.get(
-				CRIC_LiveScoreService.CUSTOM_SETTING_CRIC_MATCH_ID
+				LiveScoreService.CUSTOM_SETTING_CRIC_MATCH_ID
 			);
 			matchConfig.Value__c = commaSeparatedMatchIds;
 			if (
@@ -27,8 +27,8 @@ public without sharing class CRIC_MatchHelper {
 
 	public static List<String> getMatchIds(Date whenDate) {
 		try {
-			String responseJSON = CRIC_CalloutHelper.doGet(MATCHES_URL);
-			String seriesId = CRIC_Utils.getCricketSetting('CRIC_SERIES_ID');
+			String responseJSON = CalloutHelper.doGet(MATCHES_URL);
+			String seriesId = Utils.getCricketSetting('CRIC_SERIES_ID');
 			return extractMatchIds(
 				responseJSON,
 				Integer.valueOf(seriesId),

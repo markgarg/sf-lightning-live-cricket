@@ -1,5 +1,5 @@
 @SuppressWarnings('PMD.ExcessiveParameterList')
-public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
+public with sharing class HttpCalloutMock implements HttpCalloutMock {
 	public Integer statusCode { get; set; }
 	public String body { get; set; }
 	public Map<String, String> headers { get; set; }
@@ -13,11 +13,11 @@ public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
 	private String requestURLShouldContain;
 	private String requestBodyShouldContain;
 
-	public CRIC_HttpCalloutMock(Integer statusCode) {
+	public HttpCalloutMock(Integer statusCode) {
 		this(null, statusCode, '', '', new Map<String, String>());
 	}
 
-	public CRIC_HttpCalloutMock(
+	public HttpCalloutMock(
 		String httpMethod,
 		Integer statusCode,
 		String status,
@@ -33,12 +33,12 @@ public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
 		this.responseStatusCodeConditionMap = new Map<String, StatusBody>();
 	}
 
-	public CRIC_HttpCalloutMock whenUrlContains(String urlContains) {
+	public HttpCalloutMock whenUrlContains(String urlContains) {
 		this.urlContains = urlContains;
 		return this;
 	}
 
-	public CRIC_HttpCalloutMock respondWith(Integer statusCode, String body) {
+	public HttpCalloutMock respondWith(Integer statusCode, String body) {
 		this.statusCode = statusCode;
 		if (String.isNotBlank(this.urlContains)) {
 			this.responseStatusCodeConditionMap.put(
@@ -51,7 +51,7 @@ public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
 		return this;
 	}
 
-	public CRIC_HttpCalloutMock respondWith(String body) {
+	public HttpCalloutMock respondWith(String body) {
 		if (String.IsNotBlank(urlContains)) {
 			responseConditionMap.put(urlContains, body);
 		} else {
@@ -60,7 +60,7 @@ public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
 		return this;
 	}
 
-	public CRIC_HttpCalloutMock throwException() {
+	public HttpCalloutMock throwException() {
 		throwExceptionOnRespond = true;
 		return this;
 	}
@@ -93,7 +93,7 @@ public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
 		return this.request.getHeader(key);
 	}
 
-	public CRIC_HttpCalloutMock checkIfURLContains(
+	public HttpCalloutMock checkIfURLContains(
 		String requestURLShouldContain
 	) {
 		this.requestURLShouldContain = requestURLShouldContain;
@@ -151,7 +151,7 @@ public with sharing class CRIC_HttpCalloutMock implements HttpCalloutMock {
 		}
 
 		if (throwExceptionOnRespond) {
-			throw new CRIC_CalloutHelper.CRIC_CalloutHelperException('Test');
+			throw new CalloutHelper.CalloutHelperException('Test');
 		}
 
 		return response;

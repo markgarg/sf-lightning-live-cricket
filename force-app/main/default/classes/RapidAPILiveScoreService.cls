@@ -1,5 +1,5 @@
-public without sharing class CRIC_RapidAPILiveScoreService {
-	public static final String URL = CRIC_Utils.getCricketSetting('CRIC_URL');
+public without sharing class RapidAPILiveScoreService {
+	public static final String URL = Utils.getCricketSetting('CRIC_URL');
 	public static final String SCORE_TEMPLATE = '{0} {1} ({2}, {3}) vs {4}{5} - {6}';
 	public static final String SCORE_TEMPLATE_UPCOMING = '{0} vs {1} - {2}';
 	public static final String MATCH_STATUS_UPCOMING = 'UPCOMING';
@@ -12,7 +12,7 @@ public without sharing class CRIC_RapidAPILiveScoreService {
 			URL,
 			new List<String>{ seriesId, matchId }
 		);
-		String responseJSON = CRIC_CalloutHelper.doGet(liveScoreURL);
+		String responseJSON = CalloutHelper.doGet(liveScoreURL);
 
 		return extractScoreFromResponse(responseJSON);
 	}

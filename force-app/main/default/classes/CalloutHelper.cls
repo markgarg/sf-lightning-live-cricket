@@ -1,5 +1,5 @@
 @SuppressWarnings('PMD.ExcessiveParameterList')
-public class CRIC_CalloutHelper {
+public class CalloutHelper {
 	public static final String CUSTOM_SETTING_CRIC_RAPID_API_HOST = 'CRIC_RAPID_API_HOST';
 	public static final String CUSTOM_SETTING_CRIC_RAPID_API_KEY = 'CRIC_RAPID_API_KEY';
 
@@ -8,7 +8,7 @@ public class CRIC_CalloutHelper {
 
 		HttpResponse response = makeHTTPCallout(url, 'GET', headers, null);
 		if (response.getStatusCode() / 100 == 4) {
-			throw new CRIC_CalloutHelperException(
+			throw new CalloutHelperException(
 				'Callout failed - ' + response.getBody()
 			);
 		}
@@ -17,10 +17,10 @@ public class CRIC_CalloutHelper {
 
 	@TestVisible
 	private static Map<String, String> buildHeaders() {
-		String rapidAPIHost = CRIC_Utils.getCricketSetting(
+		String rapidAPIHost = Utils.getCricketSetting(
 			CUSTOM_SETTING_CRIC_RAPID_API_HOST
 		);
-		String rapidAPIKey = CRIC_Utils.getCricketSetting(
+		String rapidAPIKey = Utils.getCricketSetting(
 			CUSTOM_SETTING_CRIC_RAPID_API_KEY
 		);
 		Map<String, String> headers = new Map<String, String>();
@@ -54,6 +54,6 @@ public class CRIC_CalloutHelper {
 		return res;
 	}
 
-	public class CRIC_CalloutHelperException extends Exception {
+	public class CalloutHelperException extends Exception {
 	}
 }

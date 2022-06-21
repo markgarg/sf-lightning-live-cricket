@@ -1,7 +1,7 @@
 <aura:component
 	implements="force:appHostable,flexipage:availableForAllPageTypes"
 	access="global"
-	controller="CRIC_LiveScoreService"
+	controller="LiveScoreService"
 >
 	<aura:attribute
 		name="liveScores"

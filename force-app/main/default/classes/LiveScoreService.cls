@@ -1,14 +1,14 @@
-public with sharing class CRIC_LiveScoreService {
+public with sharing class LiveScoreService {
 	public static final String CUSTOM_SETTING_CRIC_MATCH_ID = 'CRIC_MATCH_ID';
 	public static final String CUSTOM_SETTING_CRIC_SERIES_ID = 'CRIC_SERIES_ID';
 	public static final String CACHE_KEY_TEMPLATE = 'CRIC{0}';
 
 	@AuraEnabled
 	public static List<String> getLiveScore() {
-		String matchIdCommaSeparated = CRIC_Utils.getCricketSetting(
+		String matchIdCommaSeparated = Utils.getCricketSetting(
 			CUSTOM_SETTING_CRIC_MATCH_ID
 		);
-		String seriesId = CRIC_Utils.getCricketSetting(
+		String seriesId = Utils.getCricketSetting(
 			CUSTOM_SETTING_CRIC_SERIES_ID
 		);
 
@@ -38,7 +38,7 @@ public with sharing class CRIC_LiveScoreService {
 		List<String> scores = new List<String>();
 
 		for (String matchId : matchIds) {
-			String liveScore = CRIC_RapidAPILiveScoreService.fetchLiveScoreFromAPI(
+			String liveScore = RapidAPILiveScoreService.fetchLiveScoreFromAPI(
 				seriesId,
 				matchId
 			);
@@ -72,6 +72,6 @@ public with sharing class CRIC_LiveScoreService {
 		public String matchId;
 	}
 
-	public class CRIC_CalloutHelperException extends Exception {
+	public class CalloutHelperException extends Exception {
 	}
 }

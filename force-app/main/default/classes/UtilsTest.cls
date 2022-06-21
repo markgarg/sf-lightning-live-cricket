@@ -1,8 +1,8 @@
 @isTest
-private class CRIC_UtilsTest {
+private class UtilsTest {
 	@isTest
 	static void shouldReturnNullIfNoKeyPresent() {
-		String shouldBeNull = CRIC_Utils.getCricketSetting(
+		String shouldBeNull = Utils.getCricketSetting(
 			'noKeyExistsWIthThisName'
 		);
 		System.assert(
@@ -15,7 +15,7 @@ private class CRIC_UtilsTest {
 	static void shouldReturnValueIfKeyPresent() {
 		insert new Cricket_Settings__c(Name = 'foo', Value__c = 'bar');
 
-		String value = CRIC_Utils.getCricketSetting('foo');
+		String value = Utils.getCricketSetting('foo');
 
 		System.assert(
 			value.equals('bar'),

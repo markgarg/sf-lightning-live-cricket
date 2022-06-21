@@ -1,21 +1,21 @@
-public class CRIC_APIScheduler implements Queueable, Database.AllowsCallouts {
+public class APIScheduler implements Queueable, Database.AllowsCallouts {
 	public static final String CUSTOM_SETTING_CRIC_SLEEP_MILLIS = 'CRIC_SLEEP_MILLIS';
 
 	public void execute(QueueableContext sc) {
-		String matchIdCommaSeparated = CRIC_Utils.getCricketSetting(
-			CRIC_LiveScoreService.CUSTOM_SETTING_CRIC_MATCH_ID
+		String matchIdCommaSeparated = Utils.getCricketSetting(
+			LiveScoreService.CUSTOM_SETTING_CRIC_MATCH_ID
 		);
-		String seriesId = CRIC_Utils.getCricketSetting(
-			CRIC_LiveScoreService.CUSTOM_SETTING_CRIC_SERIES_ID
+		String seriesId = Utils.getCricketSetting(
+			LiveScoreService.CUSTOM_SETTING_CRIC_SERIES_ID
 		);
 
 		List<String> matchIds = matchIdCommaSeparated.split(',');
-		CRIC_LiveScoreService.fetchLiveScoreFromAPI(seriesId, matchIds);
-		String sleepTimeMillis = CRIC_Utils.getCricketSetting(
+		LiveScoreService.fetchLiveScoreFromAPI(seriesId, matchIds);
+		String sleepTimeMillis = Utils.getCricketSetting(
 			CUSTOM_SETTING_CRIC_SLEEP_MILLIS
 		);
 		sleep(Long.valueOf(sleepTimeMillis));
-		System.enqueueJob(new CRIC_APIScheduler());
+		System.enqueueJob(new APIScheduler());
 	}
 
 	public static void sleep(Long milliSeconds) {

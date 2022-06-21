@@ -1,5 +1,5 @@
 @IsTest
-private class CRIC_MatchSchedulerTest {
+private class MatchSchedulerTest {
 	@TestSetup
 	static void setup() {
 		List<Cricket_Settings__c> configList = new List<Cricket_Settings__c>();
@@ -36,14 +36,14 @@ private class CRIC_MatchSchedulerTest {
 	static void shouldCallAPIWhenScheduled() {
 		// Given
 		// Throw exception so that cric_match_id custom setting isn't created/updated.
-		CRIC_HttpCalloutMock mock = new CRIC_HttpCalloutMock(200)
+		HttpCalloutMock mock = new HttpCalloutMock(200)
 			.whenUrlContains('/matches.php')
 			.throwException();
 
 		Test.startTest();
 		Test.setMock(HttpCalloutMock.class, mock);
 		// When
-		CRIC_MatchScheduler sch = new CRIC_MatchScheduler();
+		MatchScheduler sch = new MatchScheduler();
 		System.schedule('test match id fetch', '0 0 0 3 9 ? 2028', sch);
 		Test.stopTest();
 		System.assert(

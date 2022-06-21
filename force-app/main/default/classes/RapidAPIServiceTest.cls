@@ -1,5 +1,5 @@
 @IsTest
-private class CRIC_RapidAPIServiceTest {
+private class RapidAPIServiceTest {
 	@TestSetup
 	static void setup() {
 		List<Cricket_Settings__c> configList = new List<Cricket_Settings__c>();
@@ -24,7 +24,7 @@ private class CRIC_RapidAPIServiceTest {
 
 	@IsTest
 	static void shouldBuildHeadersWithHostAndKey() {
-		Map<String, String> headers = CRIC_RapidAPIService.buildHeaders();
+		Map<String, String> headers = RapidAPIService.buildHeaders();
 
 		System.assert(
 			headers.get('X-RapidAPI-Host') ==
@@ -43,7 +43,7 @@ private class CRIC_RapidAPIServiceTest {
 		String expectedScore = 'SL 8-182 33.0 ov (Lasith Malinga 0*, Suranga Lakmal 2, Dawlat Zadran 1-19) vs AFG - Rain Delay: SLA 8-182';
 		System.assertEquals(
 			expectedScore,
-			CRIC_RapidAPIService.extractScoreFromResponse(json),
+			RapidAPIService.extractScoreFromResponse(json),
 			'First innings score is not extracted correctly'
 		);
 	}
@@ -54,7 +54,7 @@ private class CRIC_RapidAPIServiceTest {
 		String expectedScore = 'AFG 1-37 5.5 ov (Rahmat Shah 1, Hazratullah Zazai 27*, Isuru Udana 0-3) vs SL 201 36.5 ov - Live: AFG need 150 runs off 211 balls(D/L Method)';
 		System.assertEquals(
 			expectedScore,
-			CRIC_RapidAPIService.extractScoreFromResponse(json),
+			RapidAPIService.extractScoreFromResponse(json),
 			'Second innings score is not extracted correctly'
 		);
 	}

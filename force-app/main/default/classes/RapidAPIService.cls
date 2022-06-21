@@ -1,5 +1,5 @@
-public without sharing class CRIC_RapidAPIService {
-	public static final String URL = CRIC_Utils.getCricketSetting('CRIC_URL');
+public without sharing class RapidAPIService {
+	public static final String URL = Utils.getCricketSetting('CRIC_URL');
 	public static final String SCORE_TEMPLATE = '{0} {1} ({2}, {3}) vs {4}{5} - {6}';
 	public static final String CUSTOM_SETTING_CRIC_RAPID_API_HOST = 'CRIC_RAPID_API_HOST';
 	public static final String CUSTOM_SETTING_CRIC_RAPID_API_KEY = 'CRIC_RAPID_API_KEY';
@@ -14,7 +14,7 @@ public without sharing class CRIC_RapidAPIService {
 		);
 		Map<String, String> headers = buildHeaders();
 
-		HttpResponse response = CRIC_CalloutHelper.makeHTTPCallout(
+		HttpResponse response = CalloutHelper.makeHTTPCallout(
 			liveScoreURL,
 			'GET',
 			headers,
@@ -22,7 +22,7 @@ public without sharing class CRIC_RapidAPIService {
 		);
 		System.debug(LoggingLevel.INFO, 'response :' + response.getBody());
 		if (response.getStatusCode() / 100 == 4) {
-			throw new CRIC_CalloutHelperException(
+			throw new CalloutHelperException(
 				'Callout failed - ' + response.getBody()
 			);
 		}
@@ -134,10 +134,10 @@ public without sharing class CRIC_RapidAPIService {
 
 	@TestVisible
 	private static Map<String, String> buildHeaders() {
-		String rapidAPIHost = CRIC_Utils.getCricketSetting(
+		String rapidAPIHost = Utils.getCricketSetting(
 			CUSTOM_SETTING_CRIC_RAPID_API_HOST
 		);
-		String rapidAPIKey = CRIC_Utils.getCricketSetting(
+		String rapidAPIKey = Utils.getCricketSetting(
 			CUSTOM_SETTING_CRIC_RAPID_API_KEY
 		);
 		Map<String, String> headers = new Map<String, String>();
@@ -188,6 +188,6 @@ public without sharing class CRIC_RapidAPIService {
 		public String runsAgainst;
 	}
 
-	public class CRIC_CalloutHelperException extends Exception {
+	public class CalloutHelperException extends Exception {
 	}
 }
