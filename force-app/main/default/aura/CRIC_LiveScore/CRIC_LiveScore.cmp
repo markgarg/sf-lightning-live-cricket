@@ -1,0 +1,28 @@
+<aura:component
+	implements="force:appHostable,flexipage:availableForAllPageTypes"
+	access="global"
+	controller="LiveScoreService"
+>
+	<aura:attribute
+		name="liveScores"
+		type="String[]"
+		description="A summary of the score"
+	/>
+
+	<aura:handler name="init" value="{! this }" action="{! c.doInit }" />
+
+	<lightning:tile>
+		<div class="cric-bg slds-box slds-grid slds-grid_vertical-align-center">
+			<div class="slds-col slds-size_7-of-8">
+				<aura:iteration items="{! v.liveScores }" var="eachScore">
+					<div>{! eachScore }</div>
+				</aura:iteration>
+			</div>
+			<div class="slds-clearfix slds-col slds-size_1-of-8">
+				<div class="slds-float_right">
+					<img src="{!$Resource.CRIC_World_Cup_Logo }" />
+				</div>
+			</div>
+		</div>
+	</lightning:tile>
+</aura:component>

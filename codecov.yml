@@ -1,0 +1,12 @@
+coverage:
+    status:
+        project:
+            default:
+                flags:
+                    - Apex
+            Apex:
+                flags:
+                    - Apex
+        patch: off
+ignore:
+    - "force-app/main/default/staticresources/**"
