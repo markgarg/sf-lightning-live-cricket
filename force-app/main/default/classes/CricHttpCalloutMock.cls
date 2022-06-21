@@ -93,7 +93,9 @@ public with sharing class CricHttpCalloutMock implements HttpCalloutMock {
 		return this.request.getHeader(key);
 	}
 
-	public CricHttpCalloutMock checkIfURLContains(String requestURLShouldContain) {
+	public CricHttpCalloutMock checkIfURLContains(
+		String requestURLShouldContain
+	) {
 		this.requestURLShouldContain = requestURLShouldContain;
 		return this;
 	}
