@@ -93,9 +93,7 @@ public with sharing class HttpCalloutMock implements HttpCalloutMock {
 		return this.request.getHeader(key);
 	}
 
-	public HttpCalloutMock checkIfURLContains(
-		String requestURLShouldContain
-	) {
+	public HttpCalloutMock checkIfURLContains(String requestURLShouldContain) {
 		this.requestURLShouldContain = requestURLShouldContain;
 		return this;
 	}
